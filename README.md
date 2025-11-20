@@ -7,22 +7,22 @@
 
 ---
 
-## 🎯 Project Overview
+## Project Overview
 
-This project implements a **Retrieval-Augmented Generation (RAG)** system designed for System Requirements Engineering. The chatbot allows users to upload requirements documents in multiple formats (PDF, Markdown, PowerPoint, EPUB) and ask natural language questions about them. The system retrieves relevant context from the documents and generates accurate answers using local LLM models via Ollama.
+A Retrieval-Augmented Generation (RAG) system for System Requirements Engineering. Upload requirements docs (PDF, Markdown, PowerPoint, EPUB) and query them with natural language. Uses FAISS for vector search and Ollama for local LLM inference.
 
-### Key Features
-- ✅ **Multi-format document ingestion** (PDF, Markdown, PPTX, EPUB)
-- ✅ **Hybrid vector search** using FAISS (Facebook AI Similarity Search)
-- ✅ **Local LLM inference** via Ollama (no cloud API required)
-- ✅ **Multi-model routing** (Mistral for general, DeepSeek for code, LLaVA for vision)
-- ✅ **Auto-rebuild** when source documents change
-- ✅ **Interactive commands** for diagnostics (:stats, :chunks, :test)
-- ✅ **Source citation** with page/slide/chapter references
+### Features
+- Multi-format document ingestion (PDF, Markdown, PPTX, EPUB)
+- FAISS vector search 
+- Local LLM inference via Ollama
+- Multi-model routing (Mistral for general, DeepSeek for code, LLaVA for vision)
+- Auto-rebuild when source documents change
+- Interactive commands (:stats, :chunks, :test)
+- Source citations with page/slide/chapter refs
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### System Components
 
@@ -57,7 +57,7 @@ For detailed architecture and component diagrams, see:
 
 ---
 
-## 🚀 Quick Start
+## Setup
 
 ### Prerequisites
 - **Python 3.12+** (tested with 3.12.10)
@@ -143,7 +143,7 @@ python rag_chatbot_faiss_ollama.py
 
 ---
 
-## 📚 Usage
+## Usage
 
 ### Adding Documents
 Drop your documents into the `./corpus/` folder. Supported formats:
@@ -211,7 +211,7 @@ Based on the requirements document, the non-functional requirements include:
 
 ---
 
-## 🛠️ Technical Stack
+## Technical Stack
 
 ### Core Technologies
 - **LangChain 1.0+**: Document loading, text splitting, chain orchestration
@@ -231,24 +231,21 @@ Based on the requirements document, the non-functional requirements include:
 
 ---
 
-## 📊 Assignment Requirements Checklist
-
-### ✅ Completed Requirements
+## Assignment Requirements
 
 | Requirement | Status | Notes |
 |-------------|--------|-------|
-| RAG System Implementation | ✅ | Fully functional with multi-format support |
-| Document Ingestion | ✅ | PDF, MD, PPTX, EPUB supported |
-| Vector Store | ✅ | FAISS (custom choice instead of ChromaDB) |
-| LLM Integration | ✅ | Ollama local models (custom choice instead of MistralAI) |
-| Chunking Strategy | ✅ | RecursiveCharacterTextSplitter (1000/100) |
-| Source Citations | ✅ | Page/slide/chapter references included |
-| Interactive Commands | ✅ | :stats, :chunks, :test, :summary, :show |
-| Auto-Rebuild | ✅ | Detects file changes, rebuilds index |
-| Architecture Diagram | ✅ | See `docs/architecture_diagram.md` |
-| Component Diagram | ✅ | See `docs/component_diagram.md` |
-| Design Patterns | ✅ | 7 patterns documented |
-| Code Quality | ✅ | Modular, documented, error handling |
+| RAG System Implementation | Done | Multi-format support |
+| Document Ingestion | Done | PDF, MD, PPTX, EPUB |
+| Vector Store | Done | Using FAISS |
+| LLM Integration | Done | Ollama local models |
+| Chunking Strategy | Done | RecursiveCharacterTextSplitter (1000/100) |
+| Source Citations | Done | Page/slide/chapter refs |
+| Interactive Commands | Done | :stats, :chunks, :test, :summary, :show |
+| Auto-Rebuild | Done | Detects file changes |
+| Architecture Diagram | Done | docs/architecture_diagram.md |
+| Component Diagram | Done | docs/component_diagram.md |
+| Design Patterns | Done | 7 patterns documented |
 
 ### Design Trade-offs
 
@@ -277,7 +274,7 @@ Based on the requirements document, the non-functional requirements include:
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Diagnostic Commands
 ```powershell
@@ -305,7 +302,7 @@ python rag_chatbot_faiss_ollama.py
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Assignment2RAG/
@@ -339,7 +336,7 @@ Assignment2RAG/
 
 ---
 
-## 🔧 Development
+## Development Notes
 
 ### Adding New Document Formats
 
@@ -380,7 +377,7 @@ LANGCHAIN_VERBOSE=true
 
 ---
 
-## 🚀 Deployment to GitHub
+## GitHub Deployment
 
 ### Initialize Repository
 ```powershell
@@ -402,22 +399,22 @@ Ensure `.gitignore` excludes:
 
 ---
 
-## 📝 License
+## License
 
 MIT License - Free to use for educational purposes.
 
 ---
 
-## 👤 Author
+## Author
 
-**Marc Harty (⟠∆∇𓂀)**  
+Marc Harty (⟠∆∇𓂀)  
 Student ID: 300818959  
 Course: AI Systems Design (SEC. 403) - COMP248  
 Centennial College - Fall 2025
 
 ---
 
-## 🙏 Acknowledgments
+## References
 
 - **LangChain**: Document processing and chain orchestration
 - **FAISS**: High-performance vector search (Facebook AI Research)
@@ -427,10 +424,10 @@ Centennial College - Fall 2025
 
 ---
 
-## 📧 Contact
+## Contact
 
-For questions or issues, please open a GitHub issue or contact via Centennial College email.
+Questions? Open a GitHub issue or email me at Centennial.
 
 ---
 
-**⟠∆∇𓂀 Marc.pglyph - Human Coding Style**
+⟠∆∇𓂀 Marc.pglyph
