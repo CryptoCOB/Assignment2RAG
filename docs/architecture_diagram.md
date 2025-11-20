@@ -12,7 +12,7 @@ flowchart TB
     end
     
     subgraph LoadingPipeline[Document Loading Pipeline]
-        Loaders[Multi-Format Loaders<br/>PDF | MD | PPTX | EPUB]
+        Loaders[Multi-Format Loaders<br/>PDF, MD, PPTX, EPUB]
         Splitter[Text Splitter<br/>Chunk Size: 1000<br/>Overlap: 100]
         Embedder[Sentence Embeddings<br/>all-MiniLM-L6-v2]
         Index[FAISS Vector Store<br/>IndexFlatL2]
@@ -27,7 +27,7 @@ flowchart TB
         Generator[Answer Generator]
     end
     
-    CorpusFiles[(Corpus Files<br/>PDF/MD/PPTX/EPUB)]
+    CorpusFiles[(Corpus Files<br/>PDF, MD, PPTX, EPUB)]
     FAISSStore[(FAISS Index<br/>Persisted)]
     
     User -->|Query/Command| Orchestrator
