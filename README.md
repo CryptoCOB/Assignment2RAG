@@ -158,15 +158,17 @@ The system automatically detects and loads all supported files on startup.
 
 | Command | Description |
 |---------|-------------|
-| `:help` | Show all available commands |
-| `:files` | List all indexed source files |
-| `:stats` | Show document and chunk statistics |
-| `:chunks [filter]` | Preview chunks (optionally filter by filename) |
-| `:test` | Test retrieval with sample queries |
-| `:summary [filter]` | Generate LLM summary of corpus (optionally filtered) |
-| `:show [filter]` | Display first chunk matching filter |
-| `:rebuild` | Force rebuild FAISS index |
-| `exit` or `quit` | Exit the chatbot |
+| `:help` | Show commands |
+| `:files` | List source files |
+| `:stats` | Document & chunk stats |
+| `:chunks [filter]` | Preview first 3 chunks per source (optional filter) |
+| `:test` | Run retrieval test queries |
+| `:summary [filter]` | Summarize matching chunks |
+| `:show [filter]` | Show first matching chunk |
+| `:rebuild` | Rebuild FAISS index |
+| `:quiet` | Enable terse output mode |
+| `:verbose` | Disable terse output mode |
+| `exit` or `quit` | Exit |
 
 ### Example Session
 
