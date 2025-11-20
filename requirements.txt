@@ -8,8 +8,11 @@ langchain-community>=0.3.0
 langchain-core>=0.3.0
 langchain-text-splitters>=0.3.0
 
-# Ollama Integration
-langchain-ollama>=0.2.0
+# OpenRouter Integration (via OpenAI-compatible API)
+langchain-openai>=0.2.0
+
+# Legacy Ollama Integration (deprecated)
+# langchain-ollama>=0.2.0
 
 # Vector Store
 faiss-cpu>=1.8.0

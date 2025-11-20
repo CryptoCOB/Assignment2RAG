@@ -9,16 +9,17 @@
 
 ## Project Overview
 
-A Retrieval-Augmented Generation (RAG) system for System Requirements Engineering. Upload requirements docs (PDF, Markdown, PowerPoint, EPUB) and query them with natural language. Uses FAISS for vector search and Ollama for local LLM inference.
+A Retrieval-Augmented Generation (RAG) system for System Requirements Engineering. Upload requirements docs (PDF, Markdown, PowerPoint, EPUB) and query them with natural language. Uses FAISS for vector search and OpenRouter for fast cloud LLM inference.
 
 ### Features
 - Multi-format document ingestion (PDF, Markdown, PPTX, EPUB)
 - FAISS vector search 
-- Local LLM inference via Ollama
-- Multi-model routing (Mistral for general, DeepSeek for code, LLaVA for vision)
+- Cloud LLM inference via OpenRouter API (Mistral Small, DeepSeek, Grok 4.1)
+- Multi-model routing (Mistral Small for general, DeepSeek for code, Grok 4.1 for diagrams)
 - Auto-rebuild when source documents change
-- Interactive commands (:stats, :chunks, :test)
+- Interactive commands (:stats, :chunks, :test, :quiet, :verbose)
 - Source citations with page/slide/chapter refs
+- Quiet mode for terse output
 
 ---
 
@@ -29,7 +30,7 @@ A Retrieval-Augmented Generation (RAG) system for System Requirements Engineerin
 ```
 User Interface (CLI)
     ↓
-RAG Orchestrator (rag_chatbot_faiss_ollama.py)
+RAG Orchestrator (rag_chatbot_openrouter.py)
     ├── Document Loading Pipeline
     │   ├── Multi-Format Loaders (PDF/MD/PPTX/EPUB)
     │   ├── Text Splitter (RecursiveCharacterTextSplitter)
@@ -38,7 +39,7 @@ RAG Orchestrator (rag_chatbot_faiss_ollama.py)
     │
     └── Inference Pipeline
         ├── Similarity Retriever (Top-K=3)
-        ├── LLM Router (Mistral/DeepSeek/LLaVA)
+        ├── LLM Router (Mistral Small/DeepSeek/Grok 4.1 via OpenRouter)
         └── Answer Generator (with source citations)
 ```
 
@@ -61,11 +62,7 @@ For detailed architecture and component diagrams, see:
 
 ### Prerequisites
 - **Python 3.12+** (tested with 3.12.10)
-- **Ollama** installed with models:
-  - `ollama pull mistral:latest` (4.4GB)
-  - `ollama pull deepseek-coder:6.7b` (3.8GB)
-  - `ollama pull llava-phi3:latest` (2.9GB)
-- **UV package manager** (optional but recommended, 10-100x faster than pip)
+- **OpenRouter API Key** (get from https://openrouter.ai/)
 
 ### Installation
 
@@ -81,7 +78,7 @@ uv venv
 .\.venv\Scripts\Activate.ps1
 
 # Install dependencies
-uv pip install langchain langchain-community langchain-ollama langchain-text-splitters `
+uv pip install langchain langchain-community langchain-openai langchain-text-splitters `
     sentence-transformers faiss-cpu pypdf python-pptx ebooklib beautifulsoup4 `
     python-dotenv numpy reportlab
 ```
@@ -106,10 +103,8 @@ pip install -r requirements.txt
 STUDENT_ID=300818959
 STUDENT_NAME=Marc Harty
 
-# Ollama Models
-OLLAMA_PRIMARY_MODEL=mistral:latest
-OLLAMA_TECHNICAL_MODEL=deepseek-coder:6.7b
-OLLAMA_VISION_MODEL=llava-phi3:latest
+# OpenRouter API Key (get from https://openrouter.ai/)
+OPENROUTER_API_KEY=sk-or-v1-your-key-here
 
 # Vector Store Configuration
 COLLECTION_NAME=rag_300818959
@@ -138,7 +133,7 @@ REBUILD_IF_NEWER=true
 .\.venv\Scripts\Activate.ps1
 
 # Run the chatbot
-python rag_chatbot_faiss_ollama.py
+python rag_chatbot_openrouter.py
 ```
 
 ---
